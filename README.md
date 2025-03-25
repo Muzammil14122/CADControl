@@ -7,3 +7,6 @@ Fusion 360 API - To create, modify and optimize CAD designs
 Reinforcement Learning - To automate workflows and improve design efficiency 
 
 Transformers - To interpret natural language instructions and translate them into actionable steps 
+
+# Note 
+The shapes are required to be run in a fusion 360 environment
