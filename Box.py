@@ -1,5 +1,5 @@
 import adsk.core, adsk.fusion, adsk.cam
-
+# type: ignore
 # Get the Fusion 360 application
 app = adsk.core.Application.get()
 ui = app.userInterface
