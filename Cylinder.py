@@ -33,11 +33,27 @@ def run(context):
         distance = adsk.core.ValueInput.createByReal(30)
         extInput.setDistanceExtent(False, distance)
         extrude = extrudes.add(extInput) 
+        # Added the fillet
+        cylinderBody = extrude.bodies.item(0)
+
+        for sketch in rootComp.sketches:
+            sketch.isVisible = False
+
+        edgeCollection = adsk.core.ObjectCollection.create()
+
+        for i in range(cylinderBody.edges.count):
+            edge = cylinderBody.edges.item(i)
+            edgeCollection.add(edge)
+        
+        filletFeature = rootComp.features.filletFeatures
+        filletInput = filletFeature.createInput()
+        filletRadius = adsk.core.ValueInput.createByReal(2.0)
+        filletInput.addConstantRadiusEdgeSet(edgeCollection,filletRadius,True)
+
+        filletFeature.add(filletInput)
 
         ui.messageBox('Cylinder is Successfully Created!')
 
     except Exception as e:
         ui.messageBox('Failed: {}'.format(e))
-
-
         
