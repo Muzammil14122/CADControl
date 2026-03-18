@@ -27,7 +27,7 @@ def create_hole(rootComp, holePoint, holeDiameter, holeDepth):
         holePoints = adsk.core.ObjectCollection.create()
         holePoints.add(sketchPoint)
         holeFeats = rootComp.features.holeFeatures
-        holeInput = holeFeats.createSimpleInput(adsk.core.ValueInput.createByReal(holeDiameter / 2.0))
+        holeInput = holeFeats.createSimpleInput(adsk.core.ValueInput.createByReal(holeDiameter))
 
         holeInput.setPositionBySketchPoints(holePoints)
         holeInput.setDistanceExtent(adsk.core.ValueInput.createByReal(holeDepth))
@@ -67,7 +67,7 @@ def run(context):
 
         holePoint = adsk.core.Point3D.create(0, 0,0) 
         holeDiameter = 5.0 
-        holeDepth = 10.0  
+        holeDepth = 3.0  
 
         create_hole(rootComp, holePoint, holeDiameter, holeDepth)
 
